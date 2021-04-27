@@ -19,11 +19,11 @@ export const supermanSchema = z.object({
   underKryptonite: z.boolean().optional(),
 });
 
-export const vilainSchema: z.ZodSchema<Vilain> = z.lazy(() =>
+export const villainSchema: z.ZodSchema<Vilain> = z.lazy(() =>
   z.object({
     name: z.string(),
     powers: z.array(z.string()),
-    friends: z.array(vilainSchema),
+    friends: z.array(villainSchema),
   })
 );
 

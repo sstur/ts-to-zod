@@ -91,14 +91,14 @@ describe("generateZodSchema", () => {
   it("should generate an array schema (T[] notation)", () => {
     const source = `export type Vilains = string[];`;
     expect(generate(source)).toMatchInlineSnapshot(
-      `"export const vilainsSchema = z.array(z.string());"`
+      `"export const villainsSchema = z.array(z.string());"`
     );
   });
 
   it("should generate an array schema (Array<T> notation)", () => {
     const source = `export type Vilains = Array<string>;`;
     expect(generate(source)).toMatchInlineSnapshot(
-      `"export const vilainsSchema = z.array(z.string());"`
+      `"export const villainsSchema = z.array(z.string());"`
     );
   });
 
@@ -143,7 +143,7 @@ describe("generateZodSchema", () => {
   it("should generate a referenced schema", () => {
     const source = `export type Vilain = BadGuy;`;
     expect(generate(source)).toMatchInlineSnapshot(
-      `"export const vilainSchema = badGuySchema;"`
+      `"export const villainSchema = badGuySchema;"`
     );
   });
 
@@ -256,7 +256,7 @@ describe("generateZodSchema", () => {
   it("should generate a required schema", () => {
     const source = `export type IDidFindYou = Required<VilainLocation>;`;
     expect(generate(source)).toMatchInlineSnapshot(
-      `"export const iDidFindYouSchema = vilainLocationSchema.required();"`
+      `"export const iDidFindYouSchema = villainLocationSchema.required();"`
     );
   });
 
@@ -323,7 +323,7 @@ describe("generateZodSchema", () => {
      "i.will.kill.everybody": true;
    };`;
     expect(generate(source)).toMatchInlineSnapshot(`
-      "export const vilainSchema = z.object({
+      "export const villainSchema = z.object({
           \\"i.will.kill.everybody\\": z.literal(true)
       });"
     `);
@@ -332,7 +332,7 @@ describe("generateZodSchema", () => {
   it("should deal with parenthesized type", () => {
     const source = `export type SecretVilain = (NormalGuy | Vilain);`;
     expect(generate(source)).toMatchInlineSnapshot(
-      `"export const secretVilainSchema = z.union([normalGuySchema, vilainSchema]);"`
+      `"export const secretVilainSchema = z.union([normalGuySchema, villainSchema]);"`
     );
   });
 
